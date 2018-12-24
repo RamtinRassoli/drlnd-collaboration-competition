@@ -135,7 +135,7 @@ Episode 1850     Average Score: 0.37
 Episode 1900     Average Score: 0.48
 Episode 1950     Average Score: 0.49
 Episode 1960     Average Score: 0.51
-Environment solved in 1860 episodes!      Average Score: 30.07
+Environment solved in 1860 episodes!      Average Score: 0.51
 ...
 Episode 3700     Average Score: 0.38
 Episode 3750     Average Score: 0.54
