@@ -33,17 +33,22 @@ The input the to the actor network is the state and the output is the action (so
         <tr>
             <td >Hidden 1</td>
             <td >Linear with Relu</td>
-            <td>(400,)</td>
+            <td>(450,)</td>
+        </tr>
+        <tr>
+            <td >Dropout 1</td>
+            <td >Dropout</td>
+            <td>(450,)</td>
         </tr>
         <tr>
             <td >Hidden 2</td>
             <td >Linear with Relu</td>
-            <td>(300,)</td>
+            <td>(350,)</td>
         </tr>
         <tr>
             <td >Output (µ(s|θ µ)) </td>
             <td >Linear with Tanh</td>
-            <td>(4,)</td>
+            <td>(2,)</td>
         </tr>
     </tbody>
 </table>
@@ -71,12 +76,17 @@ The input the to the actor network is the state and the output is the action (so
         <tr>
             <td >Hidden 1</td>
             <td >Linear with Relu</td>
-            <td>(400,)</td>
+            <td>(450,)</td>
         </tr>
         <tr>
             <td >Concat</td>
             <td >Concatenation</td>
-            <td>(400+action_size,)</td>
+            <td>(450+action_size(2),)</td>
+        </tr>
+        <tr>
+            <td >Dropout 1</td>
+            <td >Dropout</td>
+            <td>(450+action_size(2),)</td>
         </tr>
         <tr>
             <td >Hidden 2</td>
@@ -109,31 +119,33 @@ exp_replay:
 ddpg:
     gamma: 0.99 # discount factor
     tau: 1e-3 # for soft update of target parameters
-    lr_acotor: 1e-4 # learning rate
-    lr_critic: 1e-4
+    lr_acotor: 3e-4 # learning rate
+    lr_critic: 3e-4
     weight_decay: 0.0
 train:
-    n_episodes: 2000
+    n_episodes: 4000
     max_t: 1000
 ```
 
 ## Results
 ![](images/results.png)
 ```
-Episode 185     Average Score: 27.94
-Episode 186     Average Score: 28.17
-Episode 187     Average Score: 28.47
-Episode 188     Average Score: 28.77
-Episode 189     Average Score: 29.07
-Episode 190     Average Score: 29.34
-Episode 191     Average Score: 29.56
-Episode 192     Average Score: 29.83
-Episode 193     Average Score: 30.07
-Environment solved in 93 episodes!      Average Score: 30.07
+Episode 1800     Average Score: 0.42
+Episode 1850     Average Score: 0.37
+Episode 1900     Average Score: 0.48
+Episode 1950     Average Score: 0.49
+Episode 1960     Average Score: 0.51
+Environment solved in 1860 episodes!      Average Score: 30.07
+...
+Episode 3700     Average Score: 0.38
+Episode 3750     Average Score: 0.54
+Episode 3800     Average Score: 0.75
+Episode 3830     Average Score: 0.95
 ```
 ## Ideas for Improvements
 
 - Using one network for Actor-Critic
 - A3C
 - D4PG
+- MADDPG
     
